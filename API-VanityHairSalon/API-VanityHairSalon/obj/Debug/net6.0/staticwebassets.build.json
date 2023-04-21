@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "1i0eyVdO9o4SfliRPpVQJccfWejUCF5LYQgE4nNoufM=",
+  "Source": "API-VanityHairSalon",
+  "BasePath": "_content/API-VanityHairSalon",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
