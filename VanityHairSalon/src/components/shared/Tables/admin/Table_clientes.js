@@ -207,9 +207,8 @@ export class Table_clientes extends Component{
                         <span className="btn btn-outline-secondary">Estatus</span>
                         <select formControlName="empleado" class="form-control" onChange={this.estatus}> 
                             <option value=""></option>
-                            <option value="1">Activa</option>
-                            <option value="2">Completada</option>
-                            <option value="0">Cancelada</option>
+                            <option value="Activo">Activo</option>
+                            <option value="Inactivo">Inactivo</option>
                         </select>
                         </div>
 

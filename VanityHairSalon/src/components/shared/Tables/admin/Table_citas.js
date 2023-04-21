@@ -138,7 +138,6 @@ export class Table_citas extends Component{
                 fecha:this.state.fecha,
                 identificacion:this.state.identificacion,
                 servicioId:this.state.servicioId,
-                fechaCreacion:this.state.fechaCreacion,
                 idEmpleado:this.state.idEmpleado,
                 estatus:this.state.estatus
             })
@@ -165,7 +164,6 @@ export class Table_citas extends Component{
                 fecha:this.state.fecha,
                 identificacion:this.state.identificacion,
                 servicioId:this.state.servicioId,
-                fechaCreacion:this.state.fechaCreacion,
                 idEmpleado:this.state.idEmpleado,
                 estatus:this.state.estatus
             })
@@ -240,11 +238,6 @@ export class Table_citas extends Component{
 
                     <div className="modal-body">
 
-                        <div className="input-group mb-3">
-                            <span className="btn btn-outline-secondary">ID</span>
-                            <input type="text" className="form-control" value={id} onChange={this.idCitas}/>
-                        </div>
-                       
 
                         <div className="input-group mb-3">
                             <span className="btn btn-outline-secondary">Descripcion</span>
@@ -274,10 +267,7 @@ export class Table_citas extends Component{
                         )}
                         </select>
                         </div>
-                        <div className="input-group mb-3">
-                            <span className="btn btn-outline-secondary">Fecha de Creacion</span>
-                            <input type="datetime-local" className="form-control" value={fechaCreacion} onChange={this.fechaCreacion}/>
-                        </div>
+                        
 
                         <div className="input-group mb-3">
                         <span className="btn btn-outline-secondary">Empleado</span>
@@ -293,9 +283,9 @@ export class Table_citas extends Component{
                         <span className="btn btn-outline-secondary">Estatus</span>
                         <select formControlName="empleado" class="form-control" onChange={this.estatus}> 
                             <option value=""></option>
-                            <option value="1">Activa</option>
-                            <option value="2">Completada</option>
-                            <option value="0">Cancelada</option>
+                            <option value="Pendiente">Pendiente</option>
+                            <option value="Completada">Completada</option>
+                            <option value="Cancelada">Cancelada</option>
                         </select>
                         </div>
 

@@ -101,7 +101,7 @@ export class Table_clientes_emp extends Component{
         .then(response=>response.json())
         .then((result)=>{
             alert('Cliente registrado');
-            window.location.replace('/clientes');
+            window.location.replace('/clientes-emp');
         }, (error)=>{
             alert('No se pudo registrar');
         })
@@ -126,7 +126,7 @@ export class Table_clientes_emp extends Component{
             alert('Error ;(!');
             
         }, (error)=>{
-            window.location.replace('/clientes');
+            window.location.replace('/clientes-emp');
             alert('Registro actualizado');
         })
     }
@@ -207,9 +207,8 @@ export class Table_clientes_emp extends Component{
                         <span className="btn btn-outline-secondary">Estatus</span>
                         <select formControlName="empleado" class="form-control" onChange={this.estatus}> 
                             <option value=""></option>
-                            <option value="1">Activa</option>
-                            <option value="2">Completada</option>
-                            <option value="0">Cancelada</option>
+                            <option value="Activo">Activo</option>
+                            <option value="Inactivo">Inactivo</option>
                         </select>
                         </div>
 

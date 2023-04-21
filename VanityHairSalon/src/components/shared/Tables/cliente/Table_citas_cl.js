@@ -144,7 +144,7 @@ export class Table_citas_cl extends Component{
         .then(response=>response.json())
         .then((result)=>{
             alert('Citas registrado');
-            window.location.replace('/citas');
+            window.location.replace('/citas-cl');
         }, (error)=>{
             alert('No se pudo registrar');
         })
@@ -173,7 +173,7 @@ export class Table_citas_cl extends Component{
             alert('Error ;(!');
             
         }, (error)=>{
-            window.location.replace('/citas');
+            window.location.replace('/citas-cl');
             alert('Registro actualizado');
         })
     }
@@ -238,12 +238,6 @@ export class Table_citas_cl extends Component{
                     <div className="modal-body">
 
                         <div className="input-group mb-3">
-                            <span className="btn btn-outline-secondary">ID</span>
-                            <input type="text" className="form-control" value={id} onChange={this.idCitas}/>
-                        </div>
-                       
-
-                        <div className="input-group mb-3">
                             <span className="btn btn-outline-secondary">Descripcion</span>
                             <input type="text" className="form-control" value={descripcion} onChange={this.descripcion}/>
                         </div>
@@ -290,9 +284,9 @@ export class Table_citas_cl extends Component{
                         <span className="btn btn-outline-secondary">Estatus</span>
                         <select formControlName="empleado" class="form-control" onChange={this.estatus}> 
                             <option value=""></option>
-                            <option value="1">Activa</option>
-                            <option value="2">Completada</option>
-                            <option value="0">Cancelada</option>
+                            <option value="Pendiente">Pendiente</option>
+                            <option value="Completada">Completada</option>
+                            <option value="Cancelada">Cancelada</option>
                         </select>
                         </div>
 

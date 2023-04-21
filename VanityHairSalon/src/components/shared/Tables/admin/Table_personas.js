@@ -308,8 +308,8 @@ export class Table_personas extends Component{
                                 <td>{pers.telefono}</td>
                                 <td>{pers.identificacion}</td>
                                 <td>{pers.correo}</td>
-                                <td>{pers.idTipoIde}</td>
-                                <td>{pers.idUsuario}</td>
+                                <td>{pers.idTipoIdeNavigation.tipoIdentificacion1}</td>
+                                <td>{pers.idUsuarioNavigation.idUsuario}</td>
                                 <td>
                                 <button type="button" className="btn btn-outline-primary"
                                 data-bs-toggle="modal" 

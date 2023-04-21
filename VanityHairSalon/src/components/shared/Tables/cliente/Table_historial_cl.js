@@ -106,9 +106,9 @@ export class Table_historial_cl extends Component{
                                 <td>{citas.descripcion}</td>
                                 <td>{citas.fecha}</td>
                                 <td>{citas.identificacion}</td>
-                                <td>{citas.servicioId}</td>
+                                <td>{citas.servicio.nombre}</td>
                                 <td>{citas.fechaCreacion}</td>
-                                <td>{citas.idEmpleado}</td>
+                                <td>{citas.identificacionNavigation.nombre} {citas.identificacionNavigation.apellido}</td>
                                 <td>{citas.estatus}</td>
                                 
                             </tr>
