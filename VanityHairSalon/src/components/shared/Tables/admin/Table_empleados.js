@@ -193,12 +193,6 @@ export class Table_empleados extends Component{
                     <div className="modal-body">
 
                         <div className="input-group mb-3">
-                            <span className="btn btn-outline-secondary">ID</span>
-                            <input type="text" className="form-control" value={id} onChange={this.idEmple}/>
-                        </div>
-                    
-
-                        <div className="input-group mb-3">
                             <span className="btn btn-outline-secondary">Identificacion</span>
                             <select formControlName="empleado" class="form-control" onChange={this.identificacion}> 
                             <option value=""></option>
@@ -222,9 +216,8 @@ export class Table_empleados extends Component{
                         <span className="btn btn-outline-secondary">Estatus</span>
                         <select formControlName="empleado" class="form-control" onChange={this.estatus}> 
                             <option value=""></option>
-                            <option value="1">Activa</option>
-                            <option value="2">Completada</option>
-                            <option value="0">Cancelada</option>
+                            <option value="Activo">Activo</option>
+                            <option value="Inactivo">Inactivo</option>
                         </select>
                         </div>
 
@@ -261,7 +254,7 @@ export class Table_empleados extends Component{
                             <tr key={emple.idEmpleado}>
                                 <td>{emple.idEmpleado}</td>
                                 <td>{emple.identificacion}</td>
-                                <td>{emple.idEmpleado}</td>
+                                <td>{emple.idEspecialidadNavigation.nombre}</td>
                                 <td>{emple.estatus}</td>
                                 <td>
                                 <button type="button" className="btn btn-outline-primary"

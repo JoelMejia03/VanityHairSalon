@@ -183,12 +183,6 @@ export class Table_clientes_emp extends Component{
                     <div className="modal-body">
 
                         <div className="input-group mb-3">
-                            <span className="btn btn-outline-secondary">ID</span>
-                            <input type="text" className="form-control" value={id} onChange={this.idCliente}/>
-                        </div>
-                       
-
-                        <div className="input-group mb-3">
                         <span className="btn btn-outline-secondary">Identificacion</span>
                         <select formControlName="empleado" class="form-control" onChange={this.identificacion}> 
                             <option value=""></option>

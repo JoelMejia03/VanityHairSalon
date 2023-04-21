@@ -178,11 +178,6 @@ export class Table_usuarios extends Component{
 
                     <div className="modal-body">
 
-                        <div className="input-group mb-3">
-                            <span className="btn btn-outline-secondary">ID</span>
-                            <input type="text" className="form-control" value={id} onChange={this.idUsuario}/>
-                        </div>
-                       
 
                         <div className="input-group mb-3">
                             <span className="btn btn-outline-secondary">Clave</span>
@@ -203,9 +198,8 @@ export class Table_usuarios extends Component{
                         <span className="btn btn-outline-secondary">Estatus</span>
                         <select formControlName="empleado" class="form-control" onChange={this.estatus}> 
                             <option value=""></option>
-                            <option value="1">Activa</option>
-                            <option value="2">Completada</option>
-                            <option value="0">Cancelada</option>
+                            <option value="Activo">Activo</option>
+                            <option value="Inactivo">Inactivo</option>
                         </select>
                         </div>
 
@@ -242,7 +236,7 @@ export class Table_usuarios extends Component{
                             <tr key={user.idUsuario}>
                                 <td>{user.idUsuario}</td>
                                 <td>{user.clave}</td>
-                                <td>{user.idRol.descripcion}</td>
+                                <td>{user.idRolNavigation.descripcion}</td>
                                 <td>{user.estatus}</td>
                                 <td>
                                 <button type="button" className="btn btn-outline-primary"

@@ -259,7 +259,7 @@ export class Table_personas_emp extends Component{
                         </div>
 
                         <div className="input-group mb-3">
-                        <span className="btn btn-outline-secondary">Usuario</span>
+                        <span className="btn btn-outline-secondary">Usuario ID</span>
                         <select formControlName="empleado" class="form-control" onChange={this.idUsuario}> 
                             <option value=""></option>
                             {usuarios.map(usu =>
@@ -298,7 +298,7 @@ export class Table_personas_emp extends Component{
                         <th>Identificacion</th>
                         <th>Correo</th>
                         <th>Tipo de Identificacion</th>
-                        <th>Usuario</th>
+                        <th>Usuario ID</th>
                     </thead>
                     <tbody>
                         {personas.map(pers =>

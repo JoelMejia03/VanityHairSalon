@@ -40,7 +40,7 @@ export class Table_tipoidentificacion extends Component{
     //Como se mostraran los campos al agregar una nueva tipo de identificacion
     addClick(){
         this.setState({
-            modalTitle:"Registrar TIpo de Identificacion",
+            modalTitle:"Registrar Tipo de Identificacion",
             id:0,
             tipoidentificacion:""
         });
@@ -147,12 +147,6 @@ export class Table_tipoidentificacion extends Component{
                     </div>
 
                     <div className="modal-body">
-
-                        <div className="input-group mb-3">
-                            <span className="btn btn-outline-secondary">ID</span>
-                            <input type="text" className="form-control" value={id} onChange={this.idTipo}/>
-                        </div>
-                       
 
                         <div className="input-group mb-3">
                             <span className="btn btn-outline-secondary">Tipo de Identificacion</span>

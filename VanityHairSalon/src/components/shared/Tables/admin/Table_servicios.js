@@ -177,12 +177,6 @@ export class Table_servicios extends Component{
                     <div className="modal-body">
 
                         <div className="input-group mb-3">
-                            <span className="btn btn-outline-secondary">ID</span>
-                            <input type="text" className="form-control" value={id} onChange={this.idCitas}/>
-                        </div>
-                       
-
-                        <div className="input-group mb-3">
                             <span className="btn btn-outline-secondary">Nombre</span>
                             <input type="text" className="form-control" value={nombre} onChange={this.nombre}/>
                         </div>
@@ -201,9 +195,8 @@ export class Table_servicios extends Component{
                         <span className="btn btn-outline-secondary">Estatus</span>
                         <select formControlName="empleado" class="form-control" onChange={this.estatus}> 
                             <option value=""></option>
-                            <option value="1">Activa</option>
-                            <option value="2">Completada</option>
-                            <option value="0">Cancelada</option>
+                            <option value="Activo">Activo</option>
+                            <option value="Inactivo">Inactivo</option>
                         </select>
                         </div>
 

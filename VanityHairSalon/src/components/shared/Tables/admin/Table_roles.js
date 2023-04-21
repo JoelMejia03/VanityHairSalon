@@ -151,12 +151,6 @@ export class Table_roles extends Component{
                     <div className="modal-body">
 
                         <div className="input-group mb-3">
-                            <span className="btn btn-outline-secondary">ID</span>
-                            <input type="text" className="form-control" value={id} onChange={this.idRol}/>
-                        </div>
-                       
-
-                        <div className="input-group mb-3">
                             <span className="btn btn-outline-secondary">Descripcion</span>
                             <input type="text" className="form-control" value={descripcion} onChange={this.descripcion}/>
                         </div>
