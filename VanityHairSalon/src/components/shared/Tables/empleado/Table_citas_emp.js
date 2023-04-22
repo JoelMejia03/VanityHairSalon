@@ -26,7 +26,8 @@ export class Table_citas_emp extends Component{
 
     //Buscar y mostrar los clientes existentes
     refreshList(){
-       fetch(variables.API_URL +'Citas')
+    const cedula = localStorage.getItem('identificacion')
+       fetch(variables.API_URL +'Citas/'+cedula)
         .then(response=>response.json())
         .then(data =>{
             this.setState({citas:data});
@@ -202,6 +203,7 @@ export class Table_citas_emp extends Component{
 
     //FRONT
     render(){
+        const cedula = localStorage.getItem('identificacion');
         const{
             servicios,
             personas,
@@ -324,7 +326,7 @@ export class Table_citas_emp extends Component{
                         <th>Estatus</th>
                     </thead>
                     <tbody>
-                        {citas.map(citas =>
+                        {citas.map(citas => citas.estatus === "Pendiente"?
                             <tr key={citas.id}>
                                 <td>{citas.id}</td>
                                 <td>{citas.descripcion}</td>
@@ -359,7 +361,7 @@ export class Table_citas_emp extends Component{
                                 </button>
                                 </td>
                             </tr>
-                            )}
+                            :null)}
                     </tbody>
                 </table>
                 

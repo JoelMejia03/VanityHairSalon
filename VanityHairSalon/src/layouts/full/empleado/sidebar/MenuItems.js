@@ -5,17 +5,7 @@ import {
 import { uniqueId } from 'lodash';
 
 const Menuitems = [
-  {
-    navlabel: true,
-    subheader: 'Inicio',
-  },
 
-  {
-    id: uniqueId(),
-    title: 'Dashboard',
-    icon: IconLayoutDashboard,
-    href: '/dashboard-emp',
-  },
   {
     navlabel: true,
     subheader: 'Reservas',

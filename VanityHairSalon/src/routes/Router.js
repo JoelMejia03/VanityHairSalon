@@ -10,7 +10,6 @@ const BlankLayout = Loadable(lazy(() => import('../layouts/blank/BlankLayout')))
 
 /* ****Pages***** */
 //Admin
-const Dashboard = Loadable(lazy(() => import('../views/dashboard/admin/Dashboard')))
 const Citas = Loadable(lazy(() => import('../views/reservas/admin/citas')))
 const Historial = Loadable(lazy(() => import('../views/reservas/admin/historial')))
 const Cliente = Loadable(lazy(() => import('../views/mantenimientos/admin/cliente')))
@@ -29,12 +28,10 @@ const Register = Loadable(lazy(() => import('../views/authentication/Register'))
 const Login = Loadable(lazy(() => import('../views/authentication/Login')));
 
 //Cliente
-const Dashboard_cl = Loadable(lazy(() => import('../views/dashboard/cliente/Dashboard_cl')))
 const Citas_cl = Loadable(lazy(() => import('../views/reservas/cliente/citas_cl')))
 const Historial_cl = Loadable(lazy(() => import('../views/reservas/cliente/historial_cl')))
 
 //Empleado
-const Dashboard_emp = Loadable(lazy(() => import('../views/dashboard/empleado/Dashboard_emp')))
 const Citas_emp = Loadable(lazy(() => import('../views/reservas/empleado/citas_emp')))
 const Historial_emp = Loadable(lazy(() => import('../views/reservas/empleado/historial_emp')))
 const Persona_emp = Loadable(lazy(() => import('../views/mantenimientos/empleado/persona_emp')))
@@ -47,7 +44,6 @@ const Router = [
     children: [
       //admin
       { path: '/', element: <Navigate to="/auth/login" /> },
-      { path: '/dashboard', exact: true, element: <Dashboard /> },
       { path: '/citas', exact: true, element: <Citas /> },
       { path: '/historial-citas', exact: true, element: <Historial /> },
       { path: '/clientes', exact: true, element: <Cliente /> },
@@ -70,7 +66,6 @@ const Router = [
       element: <FullLayout_cl />,
       children: [
         //cliente
-    { path: '/dashboard-cl', exact: true, element: <Dashboard_cl /> },
     { path: '/citas-cl', exact: true, element: <Citas_cl /> },
     { path: '/historial-citas-cl', exact: true, element: <Historial_cl /> },
         
@@ -83,7 +78,6 @@ const Router = [
         element: <FullLayout_emp />,
         children: [
         //empleado
-        { path: '/dashboard-emp', exact: true, element: <Dashboard_emp /> },
         { path: '/citas-emp', exact: true, element: <Citas_emp /> },
         { path: '/historial-citas-emp', exact: true, element: <Historial_emp /> },
         { path: '/clientes-emp', exact: true, element: <Cliente_emp /> },

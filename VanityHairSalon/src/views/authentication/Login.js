@@ -31,15 +31,15 @@ const Login2 = () => {
         // La respuesta del servidor incluye los datos del usuario si el login fue exitoso
         if (data.idRol == 1 && data.estatus === 'Activo' )
         {
-          window.location.assign('/Dashboard');
+          window.location.assign('/citas');
           localStorage.setItem('identificacion', data.identificacion)
         }
         else if (data.idRol == 2 && data.estatus === 'Activo' ){
-          window.location.assign('/Dashboard-emp');
+          window.location.assign('/citas-emp');
           localStorage.setItem('identificacion', data.identificacion)
         }
         else if (data.idRol == 4 && data.estatus === 'Activo') {
-          window.location.assign('/Dashboard-cl');
+          window.location.assign('/citas-cl');
           localStorage.setItem('identificacion', data.identificacion)
         }
       
@@ -97,23 +97,7 @@ const Login2 = () => {
                 <CustomTextField id="clave" type="password" variant="outlined" fullWidth />
             </Box>
             <Stack justifyContent="space-between" direction="row" alignItems="center" my={2}>
-                <FormGroup>
-                    <FormControlLabel
-                        control={<Checkbox defaultChecked />}
-                        label="Recordar este dispositivo"
-                    />
-                </FormGroup>
-                <Typography
-                    component={Link}
-                    to="/"
-                    fontWeight="500"
-                    sx={{
-                        textDecoration: 'none',
-                        color: 'primary.main',
-                    }}
-                >
-                    ¿Olvidaste tu contraseña?
-                </Typography>
+                
             </Stack>
         </Stack>
         <Box>

@@ -205,7 +205,7 @@ export class Table_citas_cl extends Component{
 
     //FRONT
     render(){
-        
+        const cedula = localStorage.getItem('identificacion');
         const{
             servicios,
             personas,
@@ -253,12 +253,7 @@ export class Table_citas_cl extends Component{
 
                         <div className="input-group mb-3">
                             <span className="btn btn-outline-secondary">Identificacion</span>
-                            <select formControlName="empleado" class="form-control" onChange={this.identificacion}> 
-                            <option value=""></option>
-                            {personas.map(person =>
-                            <option value={person.identificacion}>{person.identificacion}</option>
-                            )}
-                            </select>
+                            <input type="text" className="form-control" value={cedula} onChange={this.identificacion} disabled/>
                         </div>
                         <div className="input-group mb-3">
                         <span className="btn btn-outline-secondary">Servicio</span>
