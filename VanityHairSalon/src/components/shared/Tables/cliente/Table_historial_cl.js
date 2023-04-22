@@ -23,12 +23,13 @@ export class Table_historial_cl extends Component{
 
     //Buscar y mostrar los clientes existentes
     refreshList(){
-       fetch(variables.API_URL +'Citas')
-        .then(response=>response.json())
-        .then(data =>{
-            this.setState({citas:data});
-        });
-    }
+        const cedula = localStorage.getItem('identificacion')
+           fetch(variables.API_URL +'Citas/'+cedula)
+            .then(response=>response.json())
+            .then(data =>{
+                this.setState({citas:data});
+            });
+        }
 
     componentDidMount(){
         this.refreshList();
@@ -99,7 +100,7 @@ export class Table_historial_cl extends Component{
                         <th>Estatus</th>
                     </thead>
                     <tbody>
-                        {citas.map(citas =>
+                        {citas.map(citas => citas.estatus === "Completada" || citas.estatus === "Cancelada"?
                        
                             <tr key={citas.id}>
                                 <td>{citas.id}</td>
@@ -112,7 +113,7 @@ export class Table_historial_cl extends Component{
                                 <td>{citas.estatus}</td>
                                 
                             </tr>
-                            )}
+                            :null)}
                     </tbody>
                 </table>
                 

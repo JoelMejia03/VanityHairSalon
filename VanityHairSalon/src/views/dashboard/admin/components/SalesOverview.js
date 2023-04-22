@@ -1,23 +1,43 @@
-import React from 'react';
 import { Select, MenuItem } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import DashboardCard from '../../../../components/shared/DashboardCard';
 import Chart from 'react-apexcharts';
+import React,{Component} from "react";
+import { variables } from '../../../../Variables.js';
 
+export class SalesOverview extends Component{
 
-const SalesOverview = () => {
+    constructor (props){
+        super(props);
 
-    // select
-    const [month, setMonth] = React.useState('1');
+        this.state={
+            citas:[],
+        }
+    }
 
-    const handleChange = (event) => {
-        setMonth(event.target.value);
-    };
+    //Buscar y mostrar los clientes existentes
+    refreshList(){
+       fetch(variables.API_URL +'Citas')
+        .then(response=>response.json())
+        .then(data =>{
+            this.setState({citas:data});
+        });
+    }
+
+    componentDidMount(){
+        this.refreshList();
+    }
+
+    render (){
+     
+    
+        // select
+   
 
     // chart color
-    const theme = useTheme();
-    const primary = theme.palette.primary.main;
-    const secondary = theme.palette.secondary.main;
+    //const theme = useTheme();
+    //const primary = theme.palette.primary.main;
+    //const secondary = theme.palette.secondary.main;
 
     // chart
     const optionscolumnchart = {
@@ -30,7 +50,7 @@ const SalesOverview = () => {
             },
             height: 370,
         },
-        colors: [primary, secondary],
+        //colors: [primary, secondary],
         plotOptions: {
             bar: {
                 horizontal: false,
@@ -73,30 +93,31 @@ const SalesOverview = () => {
             },
         },
         tooltip: {
-            theme: theme.palette.mode === 'dark' ? 'dark' : 'light',
+            //theme: theme.palette.mode === 'dark' ? 'dark' : 'light',
             fillSeriesColor: false,
         },
     };
     const seriescolumnchart = [
         {
             name: 'Eanings this month',
-            data: [355, 390, 300, 350, 390, 180, 355, 390],
+            data: [300, 390, 300, 350, 390, 180, 355, 390],
         },
         {
             name: 'Expense this month',
             data: [280, 250, 325, 215, 250, 310, 280, 250],
         },
     ];
-
+    
     return (
+        
 
         <DashboardCard title="Sales Overview" action={
             <Select
                 labelId="month-dd"
                 id="month-dd"
-                value={month}
+                //value={month}
                 size="small"
-                onChange={handleChange}
+                //onChange={handleChange}
             >
                 <MenuItem value={1}>March 2023</MenuItem>
                 <MenuItem value={2}>April 2023</MenuItem>
@@ -112,5 +133,6 @@ const SalesOverview = () => {
         </DashboardCard>
     );
 };
+}
 
 export default SalesOverview;

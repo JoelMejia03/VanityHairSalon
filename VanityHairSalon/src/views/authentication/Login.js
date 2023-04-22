@@ -1,14 +1,58 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Grid, Box, Card, Stack, Typography } from '@mui/material';
+import { Grid, Box, Card, Stack, Typography, Snackbar,Checkbox,FormGroup,FormControlLabel,Button } from '@mui/material';
+import CustomTextField from '../../components/forms/theme-elements/CustomTextField';
 
 // components
 import PageContainer from 'src/components/container/PageContainer';
 import Logo from 'src/layouts/full/admin/shared/logo/Logo';
-import AuthLogin from './auth/AuthLogin';
 
 const Login2 = () => {
-  
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState('');
+  const [snackbarSeverity, setSnackbarSeverity] = useState('success');
+
+  const handleSnackbarClose = () => {
+    setSnackbarOpen(false);
+  };
+
+  const handleLogin = () => {
+    const identificacion = document.getElementById('identificacion').value;
+    const clave = document.getElementById('clave').value;
+
+    fetch(`https://localhost:7112/api/Login/${identificacion} ${clave}`)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(response.status);
+        }
+        return response.json();
+      })
+      .then(data => {
+        // La respuesta del servidor incluye los datos del usuario si el login fue exitoso
+        if (data.idRol == 1 && data.estatus === 'Activo' )
+        {
+          window.location.assign('/Dashboard');
+          localStorage.setItem('identificacion', data.identificacion)
+        }
+        else if (data.idRol == 2 && data.estatus === 'Activo' ){
+          window.location.assign('/Dashboard-emp');
+          localStorage.setItem('identificacion', data.identificacion)
+        }
+        else if (data.idRol == 4 && data.estatus === 'Activo') {
+          window.location.assign('/Dashboard-cl');
+          localStorage.setItem('identificacion', data.identificacion)
+        }
+      
+      })
+      .catch(function (error){
+        if(error.response){
+            alert('Favor verificar usuario y contraseña');
+        }else{
+            alert('Favor verificar usuario y contraseña');
+        }
+    })
+  };
+
   return (
     <PageContainer title="Login" description="Inicio de sesión de usuario">
       <Box
@@ -41,16 +85,53 @@ const Login2 = () => {
               <Box display="flex" alignItems="center" justifyContent="center">
                 <Logo />
               </Box>
-              <AuthLogin
-                subtext={
-                  <Typography variant="subtitle1" textAlign="center" color="textSecondary" mb={1}>
-                    Expertos en belleza
-                  </Typography>
-                }
-                subtitle={
-                  <Stack direction="row" spacing={1} justifyContent="center" mt={3}>
+              <Stack>
+            <Box>
+                <Typography variant="subtitle1"
+                    fontWeight={600} component="label" htmlFor='username' mb="5px">Usuario</Typography>
+                <CustomTextField id="identificacion" variant="outlined" fullWidth />
+            </Box>
+            <Box mt="25px">
+                <Typography variant="subtitle1"
+                    fontWeight={600} component="label" htmlFor='password' mb="5px" >Clave</Typography>
+                <CustomTextField id="clave" type="password" variant="outlined" fullWidth />
+            </Box>
+            <Stack justifyContent="space-between" direction="row" alignItems="center" my={2}>
+                <FormGroup>
+                    <FormControlLabel
+                        control={<Checkbox defaultChecked />}
+                        label="Recordar este dispositivo"
+                    />
+                </FormGroup>
+                <Typography
+                    component={Link}
+                    to="/"
+                    fontWeight="500"
+                    sx={{
+                        textDecoration: 'none',
+                        color: 'primary.main',
+                    }}
+                >
+                    ¿Olvidaste tu contraseña?
+                </Typography>
+            </Stack>
+        </Stack>
+        <Box>
+            <Button
+                color="primary"
+                variant="contained"
+                size="large"
+                fullWidth
+                component={Link}
+                type="submit"
+                onClick={handleLogin}
+            >
+                Iniciar sesión 
+            </Button>
+            </Box>
+            <Stack direction="row" spacing={1} justifyContent="center" mt={3}>
                     <Typography color="textSecondary" variant="h6" fontWeight="500">
-                    ¿Ya tienes una cuenta?
+                    ¿Ya tienes una cuenta? 
                     </Typography>
                     <Typography
                       component={Link}
@@ -64,8 +145,6 @@ const Login2 = () => {
                       Regístrate
                     </Typography>
                   </Stack>
-                }
-              />
             </Card>
           </Grid>
         </Grid>
