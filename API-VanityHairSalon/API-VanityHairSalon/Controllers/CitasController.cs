@@ -33,21 +33,21 @@ namespace API_VanityHairSalon.Controllers
         }
 
         // GET: api/Citas/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Cita>> GetCita(int id)
+        [HttpGet("{Identificacion}")]
+        public async Task<ActionResult<Cita>> GetCita(string Identificacion)
         {
-          if (_context.Citas == null)
-          {
-              return NotFound();
-          }
-            var cita = await _context.Citas.FindAsync(id);
+            if (_context.Citas == null)
+            {
+                return NotFound();
+            }
+            var cita = await _context.Citas.Where(c => c.Identificacion == Identificacion).Include(x => x.IdentificacionNavigation).Include(y => y.Servicio).ToListAsync(); 
 
             if (cita == null)
             {
                 return NotFound();
             }
 
-            return cita;
+            return Ok(cita);
         }
 
         // PUT: api/Citas/5

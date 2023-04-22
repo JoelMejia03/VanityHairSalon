@@ -50,50 +50,6 @@ namespace API_VanityHairSalon.Controllers
             return persona;
         }
 
-        /*Get user & pass
-
-        [HttpGet("{user} {pass}", Name = "GetAuthentication")]
-
-        public ActionResult Get(string cedula, string pass)
-        {
-            try
-            {
-                var Usuario = _context.Usuarios.FirstOrDefault(p => p.IdPersonaNavigation.Identificacion == cedula);
-                if (Usuario == null) return BadRequest();
-                else
-                {
-                    if (Usuario.Clave == pass)
-                    {
-                        return Ok(Usuario);
-                    }
-                    else
-                    {
-                        return BadRequest();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
-
-
-        //Get validación user
-        [HttpGet("{user}", Name = "GetUsuario")]
-
-        public ActionResult Get(string user)
-        {
-            try
-            {
-                var Usuario = _context.Usuarios.FirstOrDefault(p => p.IdPersonaNavigation.Identificacion == user);
-                return Ok(Usuario);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }*/
 
         // PUT: api/Personas/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
