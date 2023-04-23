@@ -18,7 +18,6 @@ export class Table_citas_cl extends Component{
             fecha:"",
             identificacion:"",
             servicioId:"",
-            fechaCreacion:"",
             idEmpleado:"",
             estatus:""
         }
@@ -98,14 +97,14 @@ export class Table_citas_cl extends Component{
 
     //Como se mostraran los campos al agregar una nueva cita
     addClick(){
+        const cedula = localStorage.getItem('identificacion')
         this.setState({
             modalTitle:"Registrar Citas",
             id:0,
             descripcion:"",
             fecha:"",
-            identificacion:"",
+            identificacion:cedula,
             servicioId:"",
-            fechaCreacion:"",
             idEmpleado:"",
             estatus:""
         });
@@ -120,7 +119,6 @@ export class Table_citas_cl extends Component{
             fecha:citas.fecha,
             identificacion:citas.identificacion,
             servicioId:citas.servicioId,
-            fechaCreacion:citas.fechaCreacion,
             idEmpleado:citas.idEmpleado,
             estatus:citas.estatus
         });
@@ -139,17 +137,18 @@ export class Table_citas_cl extends Component{
                 fecha:this.state.fecha,
                 identificacion:this.state.identificacion,
                 servicioId:this.state.servicioId,
-                fechaCreacion:this.state.fechaCreacion,
                 idEmpleado:this.state.idEmpleado,
                 estatus:this.state.estatus
             })
         })
         .then(response=>response.json())
-        .then((result)=>{
-            alert('Citas registrado');
-            window.location.replace('/citas-cl');
-        }, (error)=>{
-            alert('No se pudo registrar');
+        .catch(function (error){
+            if(error.response){
+                alert('No se pudo registrar');
+            }else{
+                alert('Citas registrado');
+                window.location.replace('/citas-cl');
+            }
         })
     }
     //Update
@@ -166,18 +165,18 @@ export class Table_citas_cl extends Component{
                 fecha:this.state.fecha,
                 identificacion:this.state.identificacion,
                 servicioId:this.state.servicioId,
-                fechaCreacion:this.state.fechaCreacion,
                 idEmpleado:this.state.idEmpleado,
                 estatus:this.state.estatus
             })
         })
         .then(res=>res.json())
-        .then((result)=>{ 
-            alert('Error ;(!');
-            
-        }, (error)=>{
-            window.location.replace('/citas-cl');
-            alert('Registro actualizado');
+        .catch(function (error){
+            if(error.response){
+                alert('No se pudo actualizar');
+            }else{
+                alert('Registro actualizado');
+                window.location.replace('/citas-cl');
+            }
         })
     }
     
@@ -192,13 +191,13 @@ export class Table_citas_cl extends Component{
                 }
             })
             .then(response=>response.json())
-            .then((result)=>{
-                this.refreshList();
-                alert('Registro Eliminado');
-                
-            }, (error)=>{
-                this.refreshList();
-                alert('Registro Eliminado');
+            .catch(function (error){
+                if(error.response){
+                    alert('No se pudo eliminar');
+                }else{
+                    alert('Registro Eliminado');
+                    window.location.replace('/citas-cl');
+                }
             })
         }
     }
@@ -264,10 +263,7 @@ export class Table_citas_cl extends Component{
                         )}
                         </select>
                         </div>
-                        <div className="input-group mb-3">
-                            <span className="btn btn-outline-secondary">Fecha de Creacion</span>
-                            <input type="datetime-local" className="form-control" value={fechaCreacion} onChange={this.fechaCreacion}/>
-                        </div>
+
 
                         <div className="input-group mb-3">
                         <span className="btn btn-outline-secondary">Empleado</span>

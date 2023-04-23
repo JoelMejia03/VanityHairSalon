@@ -19,7 +19,6 @@ export class Table_citas extends Component{
             fecha:"",
             identificacion:"",
             servicioId:"",
-            fechaCreacion:"",
             idEmpleado:"",
             estatus:""
         }
@@ -103,7 +102,6 @@ export class Table_citas extends Component{
             fecha:"",
             identificacion:"",
             servicioId:"",
-            fechaCreacion:"",
             idEmpleado:"",
             estatus:""
         });
@@ -118,12 +116,10 @@ export class Table_citas extends Component{
             fecha:citas.fecha,
             identificacion:citas.identificacion,
             servicioId:citas.servicioId,
-            fechaCreacion:citas.fechaCreacion,
             idEmpleado:citas.idEmpleado,
             estatus:citas.estatus
         });
     }
-
 
     //Create
     createClick(){
@@ -143,11 +139,13 @@ export class Table_citas extends Component{
             })
         })
         .then(response=>response.json())
-        .then((result)=>{
-            alert('Citas registrado');
-            window.location.replace('/citas');
-        }, (error)=>{
-            alert('No se pudo registrar');
+        .catch(function (error){
+            if(error.response){
+                alert('No se pudo registrar');
+            }else{
+                alert('Citas registrado');
+                window.location.replace('/citas');
+            }
         })
     }
     //Update
@@ -169,12 +167,13 @@ export class Table_citas extends Component{
             })
         })
         .then(res=>res.json())
-        .then((result)=>{ 
-            alert('Error ;(!');
-            
-        }, (error)=>{
-            window.location.replace('/citas');
-            alert('Registro actualizado');
+        .catch(function (error){
+            if(error.response){
+                alert('No se pudo actualizar');
+            }else{
+                alert('Registro actualizado');
+                window.location.replace('/citas');
+            }
         })
     }
     
@@ -189,13 +188,13 @@ export class Table_citas extends Component{
                 }
             })
             .then(response=>response.json())
-            .then((result)=>{
-                this.refreshList();
-                alert('Registro Eliminado');
-                
-            }, (error)=>{
-                this.refreshList();
-                alert('Registro Eliminado');
+            .catch(function (error){
+                if(error.response){
+                    alert('No se pudo eliminar');
+                }else{
+                    alert('Registro Eliminado');
+                    window.location.replace('/citas');
+                }
             })
         }
     }

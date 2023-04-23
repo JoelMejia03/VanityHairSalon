@@ -42,7 +42,9 @@ const Login2 = () => {
           window.location.assign('/citas-cl');
           localStorage.setItem('identificacion', data.identificacion)
         }
-      
+        else {
+          alert('El usuario esta inactivo. Favor contactar al administrador.');
+        }
       })
       .catch(function (error){
         if(error.response){
